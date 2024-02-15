@@ -1,0 +1,9 @@
+# Directories
+build/
+.cache/
+
+# File Extensions
+.DS_Store
+
+# Specific Files
+compile_commands.json
