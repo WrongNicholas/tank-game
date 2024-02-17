@@ -1,4 +1,5 @@
 #include <core/Game.h>
+#include <core/LevelDataParser.h>
 
 // Initialization Functions
 void Game::initializeVariables()
@@ -7,11 +8,12 @@ void Game::initializeVariables()
   this->window = nullptr;
   this->inputHandler = nullptr;
   this->world = nullptr;
+  this->tileMap = nullptr;
 }
 
 void Game::initializeWindow()
 {
-  this->videoMode.height = 600;
+  this->videoMode.height = 608;
   this->videoMode.width = 800;
   this->window = std::shared_ptr<sf::RenderWindow>(new sf::RenderWindow(this->videoMode, "Hello World!", sf::Style::Titlebar | sf::Style::Close));
 }
@@ -21,6 +23,14 @@ void Game::initializeTextureHandler()
   // Should probably automate this later
   this->textureHandler.addTexture("player", "resources/player.png");
   this->textureHandler.addTexture("entity", "resources/entity.png");
+  this->textureHandler.addTexture("tile", "resources/simple_tile.png");
+}
+
+void Game::initializeTileMap()
+{
+  LevelDataParser levelDataParser;
+  levelDataParser.loadLevelData("resources/levels/0.json");
+  this->tileMap = std::make_shared<TileMap>(this->world, this->getTextureHandler(), levelDataParser.getTileMapData());
 }
 
 // GameObject Creation
@@ -50,8 +60,12 @@ Game::Game()
   this->initializeTextureHandler();
 
   // GameObjects
-  this->createPlayer(10.f, 10.f);
+  this->initializeTileMap();
+  this->createPlayer(32.f, 32.f);
+  
   this->createEntity(100.f, 100.f);
+  this->createEntity(500.f, 500.f);
+  
 }
 
 Game::~Game()
@@ -63,6 +77,11 @@ Game::~Game()
 const bool Game::running() const
 {
   return this->window->isOpen();
+}
+
+TextureHandler& Game::getTextureHandler()
+{
+  return this->textureHandler;
 }
 
 // Public Functions
@@ -80,6 +99,9 @@ void Game::update(float dt)
     gameObject->update(dt);
   }
 
+  // for (const auto& tile : this->tileMap->get)
+  // this->tileMap->render(this->window);
+
   // Update Player
   this->player->update(dt);
 }
@@ -88,13 +110,16 @@ void Game::render()
 {
   // Refresh Window
   this->window->clear(sf::Color::Black);
-  
+
+  // Draw TileMap
+  this->tileMap->render(this->window);
+
   // Draw All GameObjects in Vector
   for (const auto& gameObject : this->gameObjects)
   {
     this->window->draw(gameObject->getSprite());
   }
-  
+
   // Draw Player
   this->window->draw(player->getSprite());
 

@@ -17,13 +17,15 @@ void GameObject::initializeBody(std::shared_ptr<b2World> world, b2Vec2 position,
   b2FixtureDef fixtureDef;
   fixtureDef.shape = &shape;
   fixtureDef.density = 1.f;
-  fixtureDef.friction = .5f;
+  fixtureDef.friction = .1;
+  fixtureDef.restitution = 1.f;
 
   body->CreateFixture(&fixtureDef);
 }
 
 void GameObject::initializeSprite(sf::Texture& texture)
 {
+  // this->sprite.setPosition(this->body->GetPosition().x, this->body->GetPosition().y);
   this->sprite.setTexture(texture);
 }
 
@@ -35,6 +37,9 @@ GameObject::GameObject(std::shared_ptr<b2World> world, b2Vec2 position, b2BodyTy
 
   // Initialize Box2D Body (After SFML Sprite to Pull Size Dimensions for FixtureDef)
   this->initializeBody(world, position, bodyType);
+  
+  // Set Initial Sprite Position
+  this->sprite.setPosition(this->body->GetPosition().x, this->body->GetPosition().y);
 }
 
 // Accessors

@@ -6,6 +6,7 @@
 
 #include "core/InputHandler.h"
 #include "core/TextureHandler.h"
+#include "core/TileMap.h"
 
 #include "gameobject/GameObject.h"
 #include "gameobject/Player.h"
@@ -29,12 +30,13 @@ class Game {
     // GameObject Management
     std::vector<std::shared_ptr<GameObject>> gameObjects;
     std::shared_ptr<Player> player;
+    std::shared_ptr<TileMap> tileMap; 
 
     // Initialization Functions
     void initializeVariables();
     void initializeWindow();
-    void initializeTextureHandler();
-    
+    void initializeTextureHandler(); 
+    void initializeTileMap();
     // GameObject Creation
     void createPlayer(float x, float y);
     void createEntity(float x, float y);
@@ -45,7 +47,8 @@ class Game {
     
     // Accessors
     const bool running() const;
-    
+    TextureHandler& getTextureHandler();  
+
     // Public Functions
     void update(float dt);
     void render();

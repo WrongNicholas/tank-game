@@ -9,6 +9,7 @@ SFML_INCLUDE = -I/opt/homebrew/Cellar/sfml/2.6.1/include
 SFML_LIB = -L/opt/homebrew/Cellar/sfml/2.6.1/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 BOX2D_INCLUDE = -I/opt/homebrew/Cellar/box2d/2.4.1/include
 BOX2D_LIB = -L/opt/homebrew/Cellar/box2d/2.4.1/lib -lBox2D
+NLOHMANN_INCLUDE = -I/opt/homebrew/Cellar/nlohmann-json/3.11.3/include
 
 # Directories
 BUILD_DIR = build
@@ -34,7 +35,7 @@ $(EXECUTABLE): $(OBJS)
 	$(CC) $(CFLAGS) $(SFML_LIB) $(BOX2D_LIB) -o $@ $^
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CC) $(CFLAGS) $(SFML_INCLUDE) $(BOX2D_INCLUDE) -I$(INCLUDE_DIR) -c -o $@ $<
+	$(CC) $(CFLAGS) $(SFML_INCLUDE) $(BOX2D_INCLUDE) $(NLOHMANN_INCLUDE) -I$(INCLUDE_DIR) -c -o $@ $<
 
 # Run the executable
 run: $(EXECUTABLE)
