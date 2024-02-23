@@ -5,9 +5,9 @@
 // Initialization Functions
 void TextureHandler::initializeTextureMap()
 {
-  this->addTexture("entity", "resources/entity.png");
-  this->addTexture("tile", "resources/simple_tile.png");
-  this->addTexture("player", "resources/player.png");
+  this->addTexture("entity", "resources/textures/entity.png");
+  this->addTexture("tile", "resources/textures/simple_tile.png");
+  this->addTexture("player", "resources/textures/player.png");
 }
 
 // Constructor
