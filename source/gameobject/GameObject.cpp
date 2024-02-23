@@ -17,8 +17,8 @@ void GameObject::initializeBody(std::shared_ptr<b2World> world, b2Vec2 position,
   b2FixtureDef fixtureDef;
   fixtureDef.shape = &shape;
   fixtureDef.density = 1.f;
-  fixtureDef.friction = .1;
-  fixtureDef.restitution = 1.f;
+  fixtureDef.friction = .3f;
+  fixtureDef.restitution = 0.f;
 
   body->CreateFixture(&fixtureDef);
 }

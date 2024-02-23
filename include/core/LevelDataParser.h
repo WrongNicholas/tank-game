@@ -14,7 +14,8 @@ public:
 
   // Public Functions
   void loadLevelData(const std::string& filepath);
-  std::vector<int> getTileMapData();
+  void loadLevelData(const int& levelNumber);
+  std::vector<int> getData();
 };
 
 #endif

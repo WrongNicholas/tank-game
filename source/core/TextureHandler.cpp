@@ -2,10 +2,18 @@
 
 #include "core/TextureHandler.h"
 
+// Initialization Functions
+void TextureHandler::initializeTextureMap()
+{
+  this->addTexture("entity", "resources/entity.png");
+  this->addTexture("tile", "resources/simple_tile.png");
+  this->addTexture("player", "resources/player.png");
+}
+
 // Constructor
 TextureHandler::TextureHandler()
 {
-
+  this->initializeTextureMap();
 }
 
 void TextureHandler::addTexture(const std::string& name, const std::string& filepath)
@@ -23,5 +31,7 @@ void TextureHandler::addTexture(const std::string& name, const std::string& file
 
 sf::Texture& TextureHandler::getTexture(const std::string& name)
 {
+  if (!(this->textureMap.count(name)))
+    std::cerr << "Unable to find texture '" << name << "'" << std::endl;
   return this->textureMap.at(name);
 }

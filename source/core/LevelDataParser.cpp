@@ -16,7 +16,12 @@ void LevelDataParser::loadLevelData(const std::string& filepath)
   file >> this->jsonData;
 }
 
-std::vector<int> LevelDataParser::getTileMapData()
+void LevelDataParser::loadLevelData(const int& levelNumber)
+{
+  this->loadLevelData("resources/levels/" + std::to_string(levelNumber) + ".json");
+}
+
+std::vector<int> LevelDataParser::getData()
 {
   // std::cout << this->jsonData["tilemap"] << std::endl;
   return this->jsonData["tilemap"];
