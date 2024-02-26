@@ -55,3 +55,8 @@ void GameObject::update(float dt)
   b2Vec2 bodyPosition = this->body->GetPosition();
   this->sprite.setPosition(bodyPosition.x, bodyPosition.y); 
 }
+
+void GameObject::render(std::shared_ptr<sf::RenderWindow> window)
+{
+  window->draw(this->getSprite());
+}

@@ -72,7 +72,7 @@ void Game::update(float dt)
 void Game::render()
 {
   // Refresh Window
-  this->window->clear(sf::Color::Black);
+  this->window->clear(sf::Color::White);
 
   // Draw Level
   if (this->level != nullptr)

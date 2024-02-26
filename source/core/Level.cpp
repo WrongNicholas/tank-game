@@ -80,18 +80,18 @@ void Level::render(std::shared_ptr<sf::RenderWindow> window)
   // Render TileMap
   for (const auto& tile : this->tiles)
   {
-    window->draw(tile->getSprite());
+    tile->render(window);
   }
 
   // Render Entities
   for (const auto& entity : this->entities)
-  {
-    window->draw(entity->getSprite());
+  { 
+    entity->render(window);
   }
   
   // If Exists, Render Player
   if (this->player != nullptr)
   {
-    window->draw(player->getSprite());
+    this->player->render(window);
   }
 }

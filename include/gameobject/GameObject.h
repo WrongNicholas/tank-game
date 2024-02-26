@@ -26,6 +26,7 @@ class GameObject {
     
     // Public Functions
     virtual void update(float dt);
+    virtual void render(std::shared_ptr<sf::RenderWindow> window);
 };
 
 #endif

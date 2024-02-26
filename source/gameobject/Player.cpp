@@ -14,5 +14,10 @@ void Player::update(float dt)
   this->body->SetLinearVelocity(b2Vec2(inputVector.x * this->speed, inputVector.y * this->speed));  
 
   // GameObject Update
-  GameObject::update(dt);
+  this->GameObject::update(dt);
+}
+
+void Player::render(std::shared_ptr<sf::RenderWindow> window)
+{
+  this->GameObject::render(window);
 }
