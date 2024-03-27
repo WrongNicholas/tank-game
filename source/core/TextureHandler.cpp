@@ -7,7 +7,8 @@ void TextureHandler::initializeTextureMap()
 {
   this->addTexture("entity", "resources/textures/entity.png");
   this->addTexture("tile", "resources/textures/simple_tile.png");
-  this->addTexture("player", "resources/textures/player.png");
+  this->addTexture("player", "resources/textures/tank.png");
+  this->addTexture("player_arm", "resources/textures/tank_arm.png");
 }
 
 // Constructor

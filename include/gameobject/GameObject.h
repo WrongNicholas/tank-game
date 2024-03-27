@@ -5,7 +5,7 @@
 #include <box2d/box2d.h>
 
 class GameObject {
-  private:
+  protected:
     // Sprite Variables
     sf::Sprite sprite;
     
@@ -22,7 +22,7 @@ class GameObject {
     
     // Accessors
     sf::Sprite& getSprite();
-    b2Body& getBody();
+    b2Body* getBody();
     
     // Public Functions
     virtual void update(float dt);

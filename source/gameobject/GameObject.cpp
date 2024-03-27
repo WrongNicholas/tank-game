@@ -27,6 +27,7 @@ void GameObject::initializeSprite(sf::Texture& texture)
 {
   // this->sprite.setPosition(this->body->GetPosition().x, this->body->GetPosition().y);
   this->sprite.setTexture(texture);
+  this->sprite.setOrigin(this->sprite.getLocalBounds().width / 2, this->sprite.getLocalBounds().height / 2);
 }
 
 // Constructors
@@ -46,6 +47,11 @@ GameObject::GameObject(std::shared_ptr<b2World> world, b2Vec2 position, b2BodyTy
 sf::Sprite& GameObject::getSprite()
 {
   return this->sprite;
+}
+
+b2Body* GameObject::getBody()
+{
+  return this->body;
 }
 
 // Public Functions

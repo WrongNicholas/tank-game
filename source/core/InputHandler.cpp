@@ -28,7 +28,17 @@ const b2Vec2 InputHandler::getInputVector() const
   return inputVector;
 }
 
-// Public Functions
+const sf::Vector2i InputHandler::getMousePosition() const
+{
+  return sf::Mouse::getPosition(*window);
+}
+
+const bool InputHandler::getShoot() const
+{
+  return this->KEY_SHOOT;
+}
+
+// Public Functions 
 void InputHandler::pollEvents()
 {
   while(this->window->pollEvent(this->ev))
@@ -56,6 +66,9 @@ void InputHandler::pollEvents()
         case sf::Keyboard::D:
           KEY_RIGHT = true;
         break;
+        case sf::Keyboard::Space:
+          KEY_SHOOT = true;
+        break;
         default:
           // Do nothing
         break;
@@ -78,6 +91,9 @@ void InputHandler::pollEvents()
         break;
         case sf::Keyboard::D:
           KEY_RIGHT = false;
+        break;
+        case sf::Keyboard::Space:
+          KEY_SHOOT = false;
         break;
         default:
           // Do nothing

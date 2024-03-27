@@ -4,6 +4,7 @@
 void Level::initializeLevelFromData(std::shared_ptr<InputHandler> inputHandler, std::vector<int>& tileData)
 {
   float tileSize = 32.f;
+  float offset = tileSize / 2.f;
 
   int i = 0, j = 0;
   while (j < this->world_height)
@@ -11,13 +12,13 @@ void Level::initializeLevelFromData(std::shared_ptr<InputHandler> inputHandler, 
     switch(tileData[i + j * world_width])
     {
       case 1:
-        this->createTile(b2Vec2(i * tileSize, j * tileSize));
+        this->createTile(b2Vec2(i * tileSize + offset, j * tileSize + offset));
       break;
       case 2:
-        this->createPlayer(inputHandler, b2Vec2(i * tileSize, j * tileSize));
+        this->createPlayer(inputHandler, b2Vec2(i * tileSize + offset, j * tileSize + offset));
       break;
       case 3:
-        this->createEntity(b2Vec2(i * tileSize, j * tileSize));
+        this->createEntity(b2Vec2(i * tileSize + offset, j * tileSize + offset));
       break;
       default:
         // Do nothing
@@ -43,7 +44,7 @@ void Level::createTile(b2Vec2 position)
 
 void Level::createPlayer(std::shared_ptr<InputHandler> inputHandler, b2Vec2 position)
 {
-  this->player = std::make_shared<Player>(inputHandler, this->world, position, this->textureHandler.getTexture("player"));
+  this->player = std::make_shared<Player>(inputHandler, this->world, position, this->textureHandler.getTexture("player"), this->textureHandler.getTexture("player_arm"));
 }
 
 void Level::createEntity(b2Vec2 position)

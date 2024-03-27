@@ -6,23 +6,25 @@
 #include <box2d/box2d.h>
 
 class InputHandler {
-  private:
-    // Private Variables
-    std::shared_ptr<sf::RenderWindow> window;
-    sf::Event ev;
+private:
+  // Private Variables
+  std::shared_ptr<sf::RenderWindow> window;
+  sf::Event ev; 
     
-    // KeyMap
-    bool KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT;
-  public:
-    // Constructor
-    InputHandler(std::shared_ptr<sf::RenderWindow> window);
+  // KeyMap
+  bool KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_SHOOT;
+public:
+  // Constructor
+  InputHandler(std::shared_ptr<sf::RenderWindow> window);
     
-    // Accessors
-    const bool windowShouldClose() const;
-    const b2Vec2 getInputVector() const;
+  // Accessors
+  const bool windowShouldClose() const;
+  const b2Vec2 getInputVector() const;
+  const sf::Vector2i getMousePosition() const;
+  const bool getShoot() const;
     
-    // Public Functions
-    void pollEvents();
+  // Public Functions
+  void pollEvents();
 };
 
 #endif

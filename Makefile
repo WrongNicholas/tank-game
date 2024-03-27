@@ -2,7 +2,7 @@
 CC = g++
 
 # Compiler flags
-CFLAGS = -std=c++11
+CFLAGS = -std=c++20
 
 # SFML and Box2D paths
 SFML_INCLUDE = -I/opt/homebrew/Cellar/sfml/2.6.1/include
