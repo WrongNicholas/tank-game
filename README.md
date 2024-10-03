@@ -1,3 +1,5 @@
+## Note: Project is currently archived!
+
 # Tank Game
 
 Tank Game is a simplistic rendition of the popular game "Wii Play Tanks", implemented in C++ using the Box2D physics engine for physics simulation, SFML (Simple and Fast Multimedia Library) for graphics rendering.
